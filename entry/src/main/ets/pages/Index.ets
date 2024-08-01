@@ -51,40 +51,101 @@ struct Index {
         .padding({ top: 10, bottom: 10 })
 
         //抽奖区最外层
-        Stack() {
-          //四角圆点
-          Row(){}//左上
-          .width(15)
-          .height(15)
-          .borderRadius(20)
-          .backgroundColor(Color.Orange)
-          .position({x:5,y:5})
-          Row(){}//右上
-          .width(15)
-          .height(15)
-          .borderRadius(20)
-          .backgroundColor(Color.Orange)
-          .position({x:5,y:5})
-          Row(){}//左下
-          .width(15)
-          .height(15)
-          .borderRadius(20)
-          .backgroundColor(Color.Orange)
-          .position({x:5,y:5})
-          Row(){}//右下
-          .width(15)
-          .height(15)
-          .borderRadius(20)
-          .backgroundColor(Color.Orange)
-          .position({x:5,y:5})
+        Column() {
+          Column() {
+            //四角圆点
+            Row() {
+            } //左上
+            .width(15)
+            .height(15)
+            .borderRadius(20)
+            .backgroundColor(Color.Orange)
+            .position({ x: 5, y: 5 })
+
+            Row() {
+            } //右上
+            .width(15)
+            .height(15)
+            .borderRadius(20)
+            .backgroundColor(Color.Orange)
+            .position({ x: 280, y: 5 })
+
+            Row() {
+            } //左下
+            .width(15)
+            .height(15)
+            .borderRadius(20)
+            .backgroundColor(Color.Orange)
+            .position({ x: 5, y: 280 })
+
+            Row() {
+            } //右下
+            .width(15)
+            .height(15)
+            .borderRadius(20)
+            .backgroundColor(Color.Orange)
+            .position({ x: 280, y: 280 })
 
 
+            //四中白点
+            Row() {
+            } //上
+            .width(15)
+            .height(15)
+            .borderRadius(20)
+            .backgroundColor(Color.White)
+            .position({ x: '50%', y: 5 })
+            .translate({ x: '-50%' })
+
+            Row() {
+            } //下
+            .width(15)
+            .height(15)
+            .borderRadius(20)
+            .backgroundColor(Color.White)
+            .position({ x: '50%', y: 280 })
+            .translate({ x: '-50%' })
+
+            Row() {
+            } //右
+            .width(15)
+            .height(15)
+            .borderRadius(20)
+            .backgroundColor(Color.White)
+            .position({ x: 280, y: '50%' })
+            .translate({ y: '-50%' })
+
+            Row() {
+            } //左
+            .width(15)
+            .height(15)
+            .borderRadius(20)
+            .backgroundColor(Color.White)
+            .position({ x: 5, y: '50%' })
+            .translate({ y: '-50%' })
+
+
+            //4半白圈
+            Row() {
+            } //左上
+            .width(15)
+            .height(15)
+            .borderRadius(20)
+            .border({ width: 1, color: Color.White })
+            .position({ x: 5, y: '25%' })
+            .translate({y:'-50%'})
+
+          }
+          .justifyContent(FlexAlign.Center)
+          .alignItems(HorizontalAlign.Center)
+          .width(300)
+          .height(300)
+          .backgroundColor(Color.Black)
 
         }
-        .padding(5)
         .width(300)
         .height(380)
-        .backgroundColor(Color.Yellow)
+        .backgroundColor('#ffffd4a0')
         .borderRadius(10)
       }
       .backgroundImage($rawfile('background_mobile.png'))
