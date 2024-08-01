@@ -380,6 +380,10 @@ struct Index {
       .zIndex(1)
       .padding(10)
 
+
+
+
+
       //单抽获奖页
       Column() {
 
@@ -387,6 +391,8 @@ struct Index {
       .height('100%')
       .width('100%')
       .zIndex(0)
+
+
 
     }
     .linearGradient({
