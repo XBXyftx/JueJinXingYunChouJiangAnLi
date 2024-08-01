@@ -158,13 +158,44 @@ struct Index {
             .border({ width: 1, color: Color.White })
             .position({ x: '75%', y: 5 })
             .translate({x:'-50%'})
+            Row() {
+            } //右上
+            .width(15)
+            .height(15)
+            .borderRadius(20)
+            .border({ width: 1, color: Color.White })
+            .position({ x: 280, y: '25%' })
+            .translate({y:'-50%'})
+            Row() {
+            } //上右
+            .width(15)
+            .height(15)
+            .borderRadius(20)
+            .border({ width: 1, color: Color.White })
+            .position({ x: 280, y: '75%' })
+            .translate({y:'-50%'})
+            Row() {
+            } //下左
+            .width(15)
+            .height(15)
+            .borderRadius(20)
+            .border({ width: 1, color: Color.White })
+            .position({ x: '25%', y: 280 })
+            .translate({x:'-50%'})
+            Row() {
+            } //下右
+            .width(15)
+            .height(15)
+            .borderRadius(20)
+            .border({ width: 1, color: Color.White })
+            .position({ x: '75%', y: 280 })
+            .translate({x:'-50%'})
 
           }
           .justifyContent(FlexAlign.Center)
           .alignItems(HorizontalAlign.Center)
           .width(300)
           .height(300)
-          .backgroundColor(Color.Black)
 
         }
         .width(300)
