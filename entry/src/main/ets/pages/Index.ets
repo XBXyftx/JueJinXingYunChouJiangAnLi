@@ -1,7 +1,22 @@
+interface JiangPinJi{
+  img:Resource
+  text:string
+}
 @Entry
 @Component
 struct Index {
   @State shengYuKuangShi: number = 9999999;
+  @State jiangPinJi:JiangPinJi[]=[
+    {img:$rawfile('image0.png'),text:'手机支架'},
+    {img:$rawfile('image1.png'),text:'曼秀雷敦薄荷润唇膏'},
+    {img:$rawfile('image2.png'),text:'随机盲盒'},
+    {img:$rawfile('image3.png'),text:'睡眠日小盒子'},
+    {img:$rawfile('image4.png'),text:'虎虎生威眼罩'},
+    {img:$rawfile('image5.png'),text:'头戴式耳机'},
+    {img:$rawfile('image6.png'),text:'Pico Neo3'},
+    {img:$rawfile('image7.png'),text:'AirPros'},
+
+  ]
 
   build() {
     //根组件
@@ -196,24 +211,43 @@ struct Index {
 
             //中央奖品区底色框
             Flex({wrap:FlexWrap.Wrap}){
-              Column(){
+              Column({space:10}){
                 Image($rawfile('image.png'))
-                  .width(30)
+                  .width(35)
                 Text('随机矿石')
                   .fontColor(Color.Orange)
                   .fontSize(12)
               }
-              .margin(10)
+              .width(70)
+              .height(70)
+              .justifyContent(FlexAlign.Center)
+              .margin(5)
               .backgroundColor(Color.White)
+
+              ForEach(this.jiangPinJi,(item:JiangPinJi,i)=>{
+                Column({space:10}){
+                  Image(item.img)
+                    .width(35)
+                  Text(item.text)
+                    .fontColor(Color.Orange)
+                    .fontSize(12)
+                    .width(65)
+                    .textOverflow({overflow:TextOverflow.Ellipsis})
+                    .maxLines(1)
+                    .textAlign(TextAlign.Center)
+                }
+                .width(70)
+                .height(70)
+                .justifyContent(FlexAlign.Center)
+                .margin(5)
+                .backgroundColor(Color.White)
+              })
+
             }
-            .padding(10)
+            .padding(5)
             .width(250)
             .height(250)
             .backgroundColor(Color.Orange)
-
-
-
-
 
           }
           .justifyContent(FlexAlign.Center)
@@ -221,6 +255,24 @@ struct Index {
           .width(300)
           .height(300)
 
+
+          //按钮区域
+          Row(){
+            Column(){
+
+            }
+            .width(100)
+            .height(40)
+            .linearGradient({
+              direction:GradientDirection.Top,
+              colors:[['#ffffb06c',0]]
+            })
+          }
+          .alignItems(VerticalAlign.Center)
+          .padding(20)
+          .justifyContent(FlexAlign.SpaceBetween)
+          .width('100%')
+          .layoutWeight(1)
         }
         .width(300)
         .height(380)
