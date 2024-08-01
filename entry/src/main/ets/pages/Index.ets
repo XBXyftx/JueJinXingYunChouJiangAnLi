@@ -134,6 +134,30 @@ struct Index {
             .border({ width: 1, color: Color.White })
             .position({ x: 5, y: '25%' })
             .translate({y:'-50%'})
+            Row() {
+            } //左下
+            .width(15)
+            .height(15)
+            .borderRadius(20)
+            .border({ width: 1, color: Color.White })
+            .position({ x: 5, y: '75%' })
+            .translate({y:'-50%'})
+            Row() {
+            } //上左
+            .width(15)
+            .height(15)
+            .borderRadius(20)
+            .border({ width: 1, color: Color.White })
+            .position({ x: '25%', y: 5 })
+            .translate({x:'-50%'})
+            Row() {
+            } //上右
+            .width(15)
+            .height(15)
+            .borderRadius(20)
+            .border({ width: 1, color: Color.White })
+            .position({ x: '75%', y: 5 })
+            .translate({x:'-50%'})
 
           }
           .justifyContent(FlexAlign.Center)
