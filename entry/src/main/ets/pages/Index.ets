@@ -19,6 +19,7 @@ struct Index {
   ]
   @State value: number = 3000
   @State random: number = 0
+  @State danChouYe:number[]=[0,0]
 
   build() {
     //根组件
@@ -298,6 +299,8 @@ struct Index {
                 if (this.shengYuKuangShi >= 200) {
                   this.shengYuKuangShi -= 200
                   this.value += 100
+                  this.random=Math.floor(Math.random()*100)
+                  this.danChouYe=[2,1]
                 }
               }
 
@@ -336,6 +339,9 @@ struct Index {
                 if (this.shengYuKuangShi >= 2000) {
                   this.shengYuKuangShi -= 2000
                   this.value += 500
+                  this.random=Math.floor(Math.random()*1000)
+                  this.danChouYe=[2,1]
+
                 }
               }
 
@@ -395,13 +401,43 @@ struct Index {
 
       //单抽获奖页
       Column() {
+        Column({space:10}){
+          Text(`恭喜抽中${this.random}矿石`)
+            .fontSize(20)
+            .fontColor('#fff7770e')
+            .fontWeight(700)
+            .margin(30)
+          Image($rawfile('image.png'))
+            .width(80)
+          Text('点击收下奖励本次矿石累加进矿石数中')
+            .fontSize(12)
+            .margin(15)
+          Button('收下奖励')
+            .width(200)
+            .onClick(()=>{
+              this.shengYuKuangShi+=this.random
+              this.danChouYe=[0,0]
+            })
+        }
+        .backgroundColor(Color.White)
+        .width(300)
+        .height(300)
 
+        Image($rawfile('close.svg'))
+          .width(40)
+          .margin(20)
+          .onClick(()=>{
+            this.danChouYe=[0,0]
+          })
+        
       }
+      .justifyContent(FlexAlign.Center)
+      .alignItems(HorizontalAlign.Center)
       .height('100%')
       .width('100%')
       .backgroundColor('rgba(0,0,0,0.8)')
-      .zIndex(3)
-      .opacity(1)
+      .zIndex(this.danChouYe[0])
+      .opacity(this.danChouYe[1])
 
     }
     .linearGradient({
