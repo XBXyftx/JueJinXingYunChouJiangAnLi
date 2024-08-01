@@ -17,7 +17,8 @@ struct Index {
     { img: $rawfile('image6.png'), text: 'Pico Neo3' },
     { img: $rawfile('image7.png'), text: 'AirPros' },
   ]
-  @State value:number=3000
+  @State value: number = 3000
+  @State random: number = 0
 
   build() {
     //根组件
@@ -291,9 +292,13 @@ struct Index {
               offsetY: 20
             })
             .onClick(() => {
-              if (this.shengYuKuangShi>=200) {
-                this.shengYuKuangShi -= 200
-                // this.value+=200
+              if (this.value >= 6000) {
+                this.value = 0
+              } else {
+                if (this.shengYuKuangShi >= 200) {
+                  this.shengYuKuangShi -= 200
+                  this.value += 100
+                }
               }
 
             })
@@ -325,10 +330,16 @@ struct Index {
               offsetY: 20
             })
             .onClick(() => {
-              if (this.shengYuKuangShi>=2000) {
-                this.shengYuKuangShi -= 2000
-                // this.value+=2000
+              if (this.value >= 6000) {
+                this.value = 0
+              } else {
+                if (this.shengYuKuangShi >= 2000) {
+                  this.shengYuKuangShi -= 2000
+                  this.value += 500
+                }
               }
+
+
             })
 
           }
@@ -352,15 +363,16 @@ struct Index {
           Image($rawfile('bridge_icon.svg'))
             .width(30)
         }
+
         //进度条区域
         Column() {
-          Row({space:10}){
-            Progress({ value: this.value,total:6000, type: ProgressType.Linear })
+          Row({ space: 10 }) {
+            Progress({ value: this.value, total: 6000, type: ProgressType.Linear })
               .width(150)
               .height(20)
-              .style({strokeWidth:15,enableSmoothEffect:true})
+              .style({ strokeWidth: 15, enableSmoothEffect: true })
 
-            Text(){
+            Text() {
               Span(this.value.toString())
                 .fontColor('#ffee7503')
               Span('/6000')
@@ -381,18 +393,15 @@ struct Index {
       .padding(10)
 
 
-
-
-
       //单抽获奖页
       Column() {
 
       }
       .height('100%')
       .width('100%')
-      .zIndex(0)
-
-
+      .backgroundColor('rgba(0,0,0,0.8)')
+      .zIndex(3)
+      .opacity(1)
 
     }
     .linearGradient({
