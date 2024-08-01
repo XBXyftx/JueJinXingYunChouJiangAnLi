@@ -258,21 +258,73 @@ struct Index {
 
           //按钮区域
           Row(){
-            Column(){
-
+            //单抽按钮
+            Column({space:5}){
+              Text('单抽')
+                .fontSize(14)
+                .fontColor(Color.White)
+              Row({space:10}){
+                Image($rawfile('image.png'))
+                  .width(14)
+                Text('200')
+                  .fontSize(14)
+                  .fontColor(Color.White)
+              }
             }
-            .width(100)
-            .height(40)
+            .padding(5)
+            .width(110)
+            .height(50)
             .linearGradient({
-              direction:GradientDirection.Top,
-              colors:[['#ffffb06c',0]]
+              direction:GradientDirection.Bottom,
+              colors:[['#ffffb06c',0],['#fff36205',1]]
+            })
+            .borderRadius(10)
+            .shadow({
+              color:'#ffa42d00',
+              radius:5,
+              offsetY:20
+            })
+            .onClick(()=>{
+              this.shengYuKuangShi-=200
+            })
+
+            //十连抽按钮
+            Column({space:5}){
+              Text('十连抽')
+                .fontSize(14)
+                .fontColor(Color.White)
+              Row({space:10}){
+                Image($rawfile('image.png'))
+                  .width(14)
+                Text('2000')
+                  .fontSize(14)
+                  .fontColor(Color.White)
+              }
+            }
+            .padding(5)
+            .width(110)
+            .height(50)
+            .linearGradient({
+              direction:GradientDirection.Bottom,
+              colors:[['#ffffb06c',0],['#fff36205',1]]
+            })
+            .borderRadius(10)
+            .shadow({
+              color:'#ffa42d00',
+              radius:5,
+              offsetY:20
             })
           }
           .alignItems(VerticalAlign.Center)
-          .padding(20)
+          .padding(30)
           .justifyContent(FlexAlign.SpaceBetween)
           .width('100%')
           .layoutWeight(1)
+          .onClick(()=>{
+            this.shengYuKuangShi-=2000
+          })
+
+
         }
         .width(300)
         .height(380)
