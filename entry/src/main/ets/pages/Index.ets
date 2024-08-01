@@ -191,6 +191,30 @@ struct Index {
             .position({ x: '75%', y: 280 })
             .translate({x:'-50%'})
 
+
+
+
+            //中央奖品区底色框
+            Flex({wrap:FlexWrap.Wrap}){
+              Column(){
+                Image($rawfile('image.png'))
+                  .width(30)
+                Text('随机矿石')
+                  .fontColor(Color.Orange)
+                  .fontSize(12)
+              }
+              .margin(10)
+              .backgroundColor(Color.White)
+            }
+            .padding(10)
+            .width(250)
+            .height(250)
+            .backgroundColor(Color.Orange)
+
+
+
+
+
           }
           .justifyContent(FlexAlign.Center)
           .alignItems(HorizontalAlign.Center)
