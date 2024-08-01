@@ -314,15 +314,18 @@ struct Index {
               radius:5,
               offsetY:20
             })
+            .onClick(()=>{
+              this.shengYuKuangShi-=2000
+            })
+
+
           }
           .alignItems(VerticalAlign.Center)
           .padding(30)
           .justifyContent(FlexAlign.SpaceBetween)
           .width('100%')
           .layoutWeight(1)
-          .onClick(()=>{
-            this.shengYuKuangShi-=2000
-          })
+
 
 
         }
