@@ -296,14 +296,18 @@ struct Index {
               offsetY: 20
             })
             .onClick(() => {
-              if (this.value >= 6000) {
+              if (this.value === 6000) {
                 this.value = 0
                 this.zhongJiangYe = [2, 1]
                 this.zhongJiangRandom=Math.floor(Math.random() * 9)
               } else {
                 if (this.shengYuKuangShi >= 200) {
                   this.shengYuKuangShi -= 200
-                  this.value += 100
+                  if(this.value+100>=6000){
+                    this.shengYuKuangShi=6000
+                  }else {
+                    this.value += 100
+                  }
                   this.random = Math.floor(Math.random() * 100)
                   this.danChouYe = [2, 1]
                 }
