@@ -6,7 +6,7 @@ interface JiangPinJi {
 @Entry
 @Component
 struct Index {
-  @State shengYuKuangShi: number = 99;//剩余矿石数
+  @State shengYuKuangShi: number = 99999;//剩余矿石数
   @State jiangPinJi: JiangPinJi[] = [
     { img: $rawfile('image0.png'), text: '手机支架' },
     { img: $rawfile('image1.png'), text: '曼秀雷敦薄荷润唇膏' },
