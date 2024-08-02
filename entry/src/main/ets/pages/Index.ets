@@ -20,6 +20,7 @@ struct Index {
   @State value: number = 3000
   @State random: number = 0
   @State danChouYe: number[] = [0, 0]
+  @State xingYunTiShiYe: number[] = [0, 0]
   @State zhongJiangYe: number[] = [0, 0]
 
   build() {
@@ -420,6 +421,9 @@ struct Index {
             .onClick(() => {
               this.shengYuKuangShi += this.random
               this.danChouYe = [0, 0]
+              if (this.value >= 6000) {
+                this.zhongJiangYe = [2, 1]
+              }
             })
         }
         .backgroundColor(Color.White)
@@ -431,6 +435,9 @@ struct Index {
           .margin(20)
           .onClick(() => {
             this.danChouYe = [0, 0]
+            if (this.value >= 6000) {
+              this.zhongJiangYe = [2, 1]
+            }
           })
 
       }
@@ -446,19 +453,24 @@ struct Index {
       //幸运值满提示页
       Column() {
         Column() {
-          Text('幸运值已经满6000')
+          Text('幸运值已经满6000,下一次抽奖必定获得转盘内奖品')
             .fontSize(20)
-            .width(300)
+            .width(250)
         }
         .padding(20)
+        .backgroundColor(Color.White)
+        .borderRadius(20)
       }
       .justifyContent(FlexAlign.Center)
       .alignItems(HorizontalAlign.Center)
       .height('100%')
       .width('100%')
-      .backgroundColor('rgba(0,0,0,0.8)')
-      .zIndex(3)
-      .opacity(1)
+      .backgroundColor('rgba(0,0,0,0.4)')
+      .zIndex(this.xingYunTiShiYe[0])
+      .opacity(this.xingYunTiShiYe[1])
+      .onClick(() => {
+
+      })
 
 
       //满幸运中奖页
