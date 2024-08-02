@@ -20,6 +20,7 @@ struct Index {
   @State value: number = 3000
   @State random: number = 0
   @State danChouYe:number[]=[0,0]
+  @State zhongJiangYe:number[]=[0,0]
 
   build() {
     //根组件
@@ -295,6 +296,7 @@ struct Index {
             .onClick(() => {
               if (this.value >= 6000) {
                 this.value = 0
+                this.zhongJiangYe=[2,1]
               } else {
                 if (this.shengYuKuangShi >= 200) {
                   this.shengYuKuangShi -= 200
@@ -335,6 +337,7 @@ struct Index {
             .onClick(() => {
               if (this.value >= 6000) {
                 this.value = 0
+                this.zhongJiangYe=[2,1]
               } else {
                 if (this.shengYuKuangShi >= 2000) {
                   this.shengYuKuangShi -= 2000
@@ -443,7 +446,12 @@ struct Index {
 
       //满幸运中奖页
       Column(){
+        Column(){
 
+        }
+        .width(300)
+        .height(300)
+        .backgroundColor(Color.White)
       }
       .justifyContent(FlexAlign.Center)
       .alignItems(HorizontalAlign.Center)
