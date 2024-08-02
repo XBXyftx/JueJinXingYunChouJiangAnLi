@@ -6,7 +6,7 @@ interface JiangPinJi {
 @Entry
 @Component
 struct Index {
-  @State shengYuKuangShi: number = 9999999;
+  @State shengYuKuangShi: number = 9999999;//剩余矿石数
   @State jiangPinJi: JiangPinJi[] = [
     { img: $rawfile('image0.png'), text: '手机支架' },
     { img: $rawfile('image1.png'), text: '曼秀雷敦薄荷润唇膏' },
@@ -17,12 +17,13 @@ struct Index {
     { img: $rawfile('image6.png'), text: 'Pico Neo3' },
     { img: $rawfile('image7.png'), text: 'AirPros' },
   ]
-  @State value: number = 3000
-  @State random: number = 0
-  @State danChouYe: number[] = [0, 0]
-  @State xingYunTiShiYe: number[] = [0, 0]
-  @State zhongJiangYe: number[] = [0, 0]
-  @State zhongJiangRandom:number=0
+  @State value: number = 3000//幸运值进度
+  @State random: number = 0//随机矿石数
+  @State danChouYe: number[] = [0, 0]//单抽和十连抽中奖页
+  @State xingYunTiShiYe: number[] = [0, 0]//幸运值满的提示页
+  @State zhongJiangYe: number[] = [0, 0]//幸运值满后的中奖页
+  @State zhongJiangRandom:number=0//幸运值满后的随机奖品索引
+  @State kuangShiBuZuYe:number[]=[0,0]//矿石不足提示页
 
   build() {
     //根组件
@@ -304,12 +305,14 @@ struct Index {
                 if (this.shengYuKuangShi >= 200) {
                   this.shengYuKuangShi -= 200
                   if(this.value+100>=6000){
-                    this.shengYuKuangShi=6000
+                    this.value=6000
                   }else {
                     this.value += 100
                   }
                   this.random = Math.floor(Math.random() * 100)
                   this.danChouYe = [2, 1]
+                }else {
+                  this.kuangShiBuZuYe=[2,1]
                 }
               }
 
@@ -349,10 +352,16 @@ struct Index {
               } else {
                 if (this.shengYuKuangShi >= 2000) {
                   this.shengYuKuangShi -= 2000
-                  this.value += 500
+                  if(this.value+500>=6000){
+                    this.value=6000
+                  }else {
+                    this.value += 500
+                  }
                   this.random = Math.floor(Math.random() * 1000)
                   this.danChouYe = [2, 1]
 
+                }else {
+                  this.kuangShiBuZuYe=[2,1]
                 }
               }
 
@@ -478,6 +487,29 @@ struct Index {
       .opacity(this.xingYunTiShiYe[1])
       .onClick(() => {
         this.xingYunTiShiYe=[0,0]
+      })
+
+
+      //矿石不足提示页
+      Column() {
+        Column() {
+          Text('您的矿石不足无法抽奖')
+            .fontSize(20)
+            .width(250)
+        }
+        .padding(20)
+        .backgroundColor(Color.White)
+        .borderRadius(20)
+      }
+      .justifyContent(FlexAlign.Center)
+      .alignItems(HorizontalAlign.Center)
+      .height('100%')
+      .width('100%')
+      .backgroundColor('rgba(0,0,0,0.4)')
+      .zIndex(this.kuangShiBuZuYe[0])
+      .opacity(this.kuangShiBuZuYe[1])
+      .onClick(() => {
+        this.kuangShiBuZuYe=[0,0]
       })
 
 
