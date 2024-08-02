@@ -6,7 +6,7 @@ interface JiangPinJi {
 @Entry
 @Component
 struct Index {
-  @State shengYuKuangShi: number = 9999999;//剩余矿石数
+  @State shengYuKuangShi: number = 99;//剩余矿石数
   @State jiangPinJi: JiangPinJi[] = [
     { img: $rawfile('image0.png'), text: '手机支架' },
     { img: $rawfile('image1.png'), text: '曼秀雷敦薄荷润唇膏' },
@@ -24,6 +24,7 @@ struct Index {
   @State zhongJiangYe: number[] = [0, 0]//幸运值满后的中奖页
   @State zhongJiangRandom:number=0//幸运值满后的随机奖品索引
   @State kuangShiBuZuYe:number[]=[0,0]//矿石不足提示页
+  @State chouJiangGuiZe:number[]=[0,0]//抽奖规则
 
   build() {
     //根组件
@@ -496,6 +497,7 @@ struct Index {
           Text('您的矿石不足无法抽奖')
             .fontSize(20)
             .width(250)
+            .textAlign(TextAlign.Center)
         }
         .padding(20)
         .backgroundColor(Color.White)
@@ -511,6 +513,30 @@ struct Index {
       .onClick(() => {
         this.kuangShiBuZuYe=[0,0]
       })
+
+
+
+
+      //抽奖规则
+      Column() {
+        Column() {
+
+        }
+        .padding(20)
+        .backgroundColor(Color.White)
+        .borderRadius(20)
+      }
+      .padding(10)
+      .alignItems(HorizontalAlign.Center)
+      .height('100%')
+      .width('100%')
+      .backgroundColor('rgba(0,0,0,0.2)')
+      .zIndex(3)
+      .opacity(1)
+      .onClick(() => {
+        this.chouJiangGuiZe=[0,0]
+      })
+
 
 
       //满幸运中奖页
