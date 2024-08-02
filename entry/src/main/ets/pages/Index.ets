@@ -399,7 +399,7 @@ struct Index {
       .padding(10)
 
 
-      //单抽获奖页
+      //单抽和十连抽获奖页
       Column() {
         Column({space:10}){
           Text(`恭喜抽中${this.random}矿石`)
@@ -438,6 +438,21 @@ struct Index {
       .backgroundColor('rgba(0,0,0,0.8)')
       .zIndex(this.danChouYe[0])
       .opacity(this.danChouYe[1])
+
+
+
+      //满幸运中奖页
+      Column(){
+
+      }
+      .justifyContent(FlexAlign.Center)
+      .alignItems(HorizontalAlign.Center)
+      .height('100%')
+      .width('100%')
+      .backgroundColor('rgba(0,0,0,0.8)')
+      .zIndex(3)
+      .opacity(1)
+
 
     }
     .linearGradient({
