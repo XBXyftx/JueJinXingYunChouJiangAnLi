@@ -66,6 +66,9 @@ struct Index {
             Text('抽奖规则')
               .fontColor(Color.White)
           }
+          .onClick(()=>{
+            this.chouJiangGuiZe=[2,1]
+          })
 
         }
         .margin({ top: 30, bottom: 20 })
@@ -519,20 +522,40 @@ struct Index {
 
       //抽奖规则
       Column() {
-        Column() {
-
+        Column({space:10}) {
+          Text('抽奖规则')
+            .fontWeight(700)
+            .margin({bottom:20})
+            .fontSize(16)
+          Text('参与本次活动前，请您详细阅读活动规则及相关条款，凡参与本次活动，则视为您已阅读理解并同意活动规则及注意事项全部内容。')
+            .fontSize(14)
+            .fontWeight(500)
+          Text('一、抽奖说明')
+            .fontWeight(500)
+          Text('1、同一用户每人每天首次访问稀土掘金，完成每日签到后，即可免费获得一次抽奖机会。')
+            .fontSize(13)
+            .fontWeight(300)
+          Text('2、免费抽奖次数用尽后，每抽奖一次需要消耗200矿石；当您账户中的矿石数小于200时，将无法参与抽奖，当您账户矿石数量小于2000时将无法使用10连抽功能。')
+            .fontSize(13)
+            .fontWeight(300)
+          Text('3、幸运值累计到6000时，必定抽奖转盘中的实物奖励，任何一次抽中实物奖励后，幸运值会重新累计。')
+            .fontSize(13)
+            .fontWeight(300)
+            .margin({bottom:20})
         }
-        .padding(20)
+        .width(300)
+        .padding(10)
         .backgroundColor(Color.White)
         .borderRadius(20)
+        .alignItems(HorizontalAlign.Start)
       }
-      .padding(10)
+      .justifyContent(FlexAlign.Center)
       .alignItems(HorizontalAlign.Center)
       .height('100%')
       .width('100%')
       .backgroundColor('rgba(0,0,0,0.2)')
-      .zIndex(3)
-      .opacity(1)
+      .zIndex(this.chouJiangGuiZe[0])
+      .opacity(this.chouJiangGuiZe[1])
       .onClick(() => {
         this.chouJiangGuiZe=[0,0]
       })
