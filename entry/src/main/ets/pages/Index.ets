@@ -22,6 +22,7 @@ struct Index {
   @State danChouYe: number[] = [0, 0]
   @State xingYunTiShiYe: number[] = [0, 0]
   @State zhongJiangYe: number[] = [0, 0]
+  @State zhongJiangRandom:number=0
 
   build() {
     //根组件
@@ -298,6 +299,7 @@ struct Index {
               if (this.value >= 6000) {
                 this.value = 0
                 this.zhongJiangYe = [2, 1]
+                this.zhongJiangRandom=Math.floor(Math.random() * 9)
               } else {
                 if (this.shengYuKuangShi >= 200) {
                   this.shengYuKuangShi -= 200
@@ -339,6 +341,7 @@ struct Index {
               if (this.value >= 6000) {
                 this.value = 0
                 this.zhongJiangYe = [2, 1]
+                this.zhongJiangRandom=Math.floor(Math.random() * 9)
               } else {
                 if (this.shengYuKuangShi >= 2000) {
                   this.shengYuKuangShi -= 2000
@@ -419,11 +422,11 @@ struct Index {
           Button('收下奖励')
             .width(200)
             .onClick(() => {
+              if (this.value >= 6000) {
+                this.xingYunTiShiYe = [2, 1]
+              }
               this.shengYuKuangShi += this.random
               this.danChouYe = [0, 0]
-              if (this.value >= 6000) {
-                this.zhongJiangYe = [2, 1]
-              }
             })
         }
         .backgroundColor(Color.White)
@@ -434,10 +437,11 @@ struct Index {
           .width(40)
           .margin(20)
           .onClick(() => {
-            this.danChouYe = [0, 0]
             if (this.value >= 6000) {
-              this.zhongJiangYe = [2, 1]
+              this.xingYunTiShiYe = [2, 1]
             }
+            this.danChouYe = [0, 0]
+
           })
 
       }
@@ -469,15 +473,27 @@ struct Index {
       .zIndex(this.xingYunTiShiYe[0])
       .opacity(this.xingYunTiShiYe[1])
       .onClick(() => {
-
+        this.xingYunTiShiYe=[0,0]
       })
 
 
       //满幸运中奖页
       Column() {
-        Column() {
-
+        Column({space:10}) {
+          Text(`恭喜抽中${this.jiangPinJi[this.zhongJiangRandom].text}`)
+            .width(200)
+            .textAlign(TextAlign.Center)
+            .fontSize(20)
+          Image(this.jiangPinJi[this.zhongJiangRandom].img)
+            .width(100)
+          Button('收下奖励')
+            .width(200)
+            .onClick(()=>{
+              this.zhongJiangYe=[0,0]
+            })
         }
+        .justifyContent(FlexAlign.Center)
+        .alignItems(HorizontalAlign.Center)
         .width(300)
         .height(300)
         .backgroundColor(Color.White)
